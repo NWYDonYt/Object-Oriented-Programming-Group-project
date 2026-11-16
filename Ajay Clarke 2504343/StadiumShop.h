@@ -1,5 +1,10 @@
 #ifndef StadiumShop_H
 #define StadiumShop_H
+#pragma once
+#include <string>
+#include <vector>
+#include "Product.h"
+using namespace std;
 class StadiumShop {
 public:
     void completeSale() {

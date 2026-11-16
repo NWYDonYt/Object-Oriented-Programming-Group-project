@@ -1,6 +1,7 @@
 #ifndef Fooditem_H
 #define Fooditem_H
-
+#pragma once
+#include "Product.h"
 #include <iostream>
 
 class Fooditem {

@@ -1,6 +1,9 @@
 #ifndef  Merchandise_h
 #define  Merchandise_h
-
+#pragma once
+#include <string>
+#include "Product.h"
+using namespace std;
 class Merchandise {
 private:
     string itemType;
