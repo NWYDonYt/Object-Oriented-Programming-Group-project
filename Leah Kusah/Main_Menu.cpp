@@ -2,17 +2,84 @@
 #include <limits>
 #include <string>
 
-#include "Ticket.h"
-#include "Product.h"
-#include "Merchandise.h"
-#include "Fooditem.h"
-#include "StadiumShop.h"
+// ---------- Exceptions.h ----------
+#pragma once
+#include <stdexcept>
+#include <string>
+
+// ---------- Storable.h ----------
+#pragma once
+#include <string>
+
+// ---------- Person.h ----------
+#pragma once
+#include <string>
+#include "Storable.h"
+
+// ---------- Player.h ----------
+#pragma once
+#include <string>
+#include "Person.h"
+
+// ---------- Coach.h ----------
+#pragma once
+#include <string>
+#include "Person.h"
+
+// ---------- Spectator.h ----------
+#pragma once
+#include "Person.h"
+
+// ---------- LeagueCommissioner.h ----------
+#pragma once
+#include "Person.h"
+
+// ---------- MatchOfficial.h ----------
+#pragma once
+#include <string>
+#include "Person.h"
+
+// ---------- FootballTeam.h ----------
+#pragma once
+#include <string>
+#include <vector>
+#include "Storable.h"
+#include "Player.h"
+#include "Coach.h"
+
+// ---------- Stadium.h ----------
+#pragma once
+#include <string>
+#include "Storable.h"
+
+// ---------- MatchResult.h ----------
+#pragma once
+#include "Storable.h"
+
+// ---------- Fixture.h ----------
+#pragma once
+#include <string>
+#include <vector>
+#include "Storable.h"
+#include "FootballTeam.h"
 #include "Stadium.h"
-#include "MatchOffical.h"
+#include "MatchOfficial.h"
 #include "MatchResult.h"
-#include "Fixture.h"
+
+// ---------- Ticket.h ----------
+#pragma once
+#include <string>
+#include "Storable.h"
+
+// ---------- Product.h ----------
+#pragma once
+#include <string>
+#include "Storable.h"
+
+// ---------- Merchandise.h ----------
+#pragma once
 #include "FootballLeague.h"
-#include "LeagueCommissioner.h"
+
 using namespace std;
 
 int Frontscreen();
