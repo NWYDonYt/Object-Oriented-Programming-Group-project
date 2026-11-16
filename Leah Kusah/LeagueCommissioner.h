@@ -1,14 +1,19 @@
-#ifdef LeagueCommissioner_h
-#define LeagueCommissioner_h
-
+//League Commissioner Header File
+#ifndef LEAGUECOMMISSIONER_H
+#define LEAGUECOMMISSIONER_H
+#pragma once
+#include "Person.h"
+#include "FootballLeague.h"
 class LeagueCommissioner {
-    private:
-        string commissionerName;
-        FootballLeague* league;
-    public:
-       LeagueCommissioner(string name, FootballLeague* teamLeague);
-       void approveTeam() const;
-       void displayInfo() const;
+private:
+    std::string commissionerName;
+    FootballLeague* league;
+
+public:
+    LeagueCommissioner(std::string name, FootballLeague* footballLeague);
+
+    void displayInformation() const;
+    void manageLeague() const;
 };
 
 #endif
