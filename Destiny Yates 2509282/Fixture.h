@@ -1,7 +1,7 @@
 #ifndef FIXTURE_H
 #define FIXTURE_H
 
-
+#include <string>
 
 class Fixture {
     private:

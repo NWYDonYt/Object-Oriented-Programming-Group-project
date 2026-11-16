@@ -5,10 +5,10 @@ class Stadium {
     private:
         int stadiumId;
         string name;
-        string Location;
+        string location;
         int capacity;
-        string fieldcondition;
-        double ticketprice;
+        string fieldCondition;
+        double ticketPrice;
         int ticketsSold;
 
     public:
