@@ -1,6 +1,11 @@
 #ifndef STADIUM_H
 #define STADIUM_H
 
+#pragma once
+#include <string>
+#include "Storable.h"
+using namespace std;
+
 class Stadium {
     private:
         int stadiumId;

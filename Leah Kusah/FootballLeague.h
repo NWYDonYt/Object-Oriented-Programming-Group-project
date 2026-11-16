@@ -7,6 +7,8 @@
 #include "Storable.h"
 #include "Player.h"
 #include "Coach.h"
+using namespace std;
+
 class Footballleague {
     private:
         std::string leagueName;

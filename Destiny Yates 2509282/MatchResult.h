@@ -1,6 +1,7 @@
 #ifndef MATCHRESULT_H
 #define MATCHRESULT_H
-
+#pragma once
+#include "Storable.h"
 class MatchResult {
     private:
         int homeScore;

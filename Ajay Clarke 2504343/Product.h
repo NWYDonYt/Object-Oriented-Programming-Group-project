@@ -1,6 +1,10 @@
 #ifndef PRODUCT_H
 #define PRODUCT_H
-
+#pragma once
+#include <string>
+#include "Storable.h"
+#include <iostream>
+using namespace std;
 class Product {
 private:
     int productId;
