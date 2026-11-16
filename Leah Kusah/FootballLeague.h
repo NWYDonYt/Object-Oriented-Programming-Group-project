@@ -1,14 +1,21 @@
 #ifndef Footballleague_H
 #define Footballleague_H
 
+#pragma once
+#include <string>
+#include <vector>
+#include "Storable.h"
+#include "Player.h"
+#include "Coach.h"
 class Footballleague {
     private:
-        string leagueName;
+        std::string leagueName;
         int season;
        
     public:
-        Footballleague(string name, int year);
+        Footballleague(std::string name, int year);
         void sheduleFixtur();
         void recordResult();
         void showStandings();
 };
+#endif
