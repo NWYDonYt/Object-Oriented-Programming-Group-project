@@ -3,10 +3,12 @@
 
 class LeagueCommissioner {
     private:
-       
+        string commissionerName;
+        FootballLeague* league;
     public:
-       void approveTeam();
-       void dispalyInfo();
+       LeagueCommissioner(string name, FootballLeague* teamLeague);
+       void approveTeam() const;
+       void displayInfo() const;
 };
 
 #endif
