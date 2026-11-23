@@ -11,7 +11,7 @@ class Stadium {
         int stadiumId;
         string name;
         string location;
-        int capacity;
+    
         string fieldCondition;
         double ticketPrice;
         int ticketsSold;
@@ -19,7 +19,7 @@ class Stadium {
 
     public:
         Stadium();
-        Stadium(string name, int capacity);
+        Stadium(string name, int occupancy );
         Stadium(const Stadium& S);
         void sellTickets(int ticketsSold);
 
@@ -27,7 +27,6 @@ class Stadium {
         void setStadiumId(int stadiumId);
         void setName(string name);
         void setLocation(string location);
-        void setCapacity(int capacity);
         void setFieldCondition(string fieldCondition);
         void setTicketPrice(double ticketPrice);
         void setTicketsSold(int ticketsSold);
