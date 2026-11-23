@@ -27,4 +27,4 @@ class Fixture {
         std::string getStatus();
 };
 
-#endif // FIXTURE_H
+#endif // FIXTURE_H;
