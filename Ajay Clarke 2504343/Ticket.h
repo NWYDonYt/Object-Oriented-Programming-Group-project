@@ -1,9 +1,11 @@
 #ifndef TICKET_H
 #define TICKET_H
 #pragma once
+#include <iostream>
 #include <string>
 #include "Storable.h"
 using namespace std;
+
 class Ticket {
 private:
     int ticketId;

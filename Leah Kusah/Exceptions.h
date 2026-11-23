@@ -23,4 +23,19 @@ public:
         : LeagueException(message) {}
 };
 
+// New: a value is empty, out of range, or badly formatted
+class InvalidDataException : public LeagueException {
+public:
+    InvalidDataException(std::string message)
+        : LeagueException(message) {}
+};
+
+// New: a score, quantity or count was negative
+class NegativeValueException : public LeagueException {
+public:
+    NegativeValueException(std::string message)
+        : LeagueException(message) {}
+};
+
+
 #endif

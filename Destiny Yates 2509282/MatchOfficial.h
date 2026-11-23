@@ -6,13 +6,30 @@
 #include "Person.h"
 class MatchOfficial {
     private:
-        std::string officiatingRole;
-        std::string rank;
+        string officiatingRole;
+        string rank;
         bool Available;
     public:
-        MatchOfficial();
-        MatchOfficial(std::string officiatingRole, std::string rank, bool Available);
-        MatchOfficial(const MatchOfficial& MO);
+    // Default constructor
+        MatchOfficial(){
+            officiatingRole = "";
+            rank = "";
+            Available = false;
+        };
+    // Parameterized constructor
+        MatchOfficial(std::string officiatingRole, std::string rank, bool Available){
+            this->officiatingRole = officiatingRole;
+            this->rank = rank;
+            this->Available = Available;
+        };
+    // Copy constructor
+        MatchOfficial(const MatchOfficial& MO){
+            this->officiatingRole = MO.officiatingRole;
+            this->rank = MO.rank;
+            this->Available = MO.Available;
+        };
+
+        // Getter and Setter methods
         void setOfficiatingRole(std::string officiatingRole);
         void setRank(std::string rank);
         void setAvailable(bool Available);

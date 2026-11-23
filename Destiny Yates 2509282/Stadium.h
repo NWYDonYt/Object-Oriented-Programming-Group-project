@@ -12,7 +12,7 @@ class Stadium {
         string name;
         string location;
         int capacity;
-        string fieldCondition; //Excellent, Good, Poor
+        string fieldCondition;
         double ticketPrice;
         int ticketsSold;
         int occupancy;
@@ -47,7 +47,7 @@ class Stadium {
         //ticket sales cannot exceed capacity of stadium
         void TicketsSold(int quantity);
 
-    
+        
 };
 
 #endif // STADIUM_H
