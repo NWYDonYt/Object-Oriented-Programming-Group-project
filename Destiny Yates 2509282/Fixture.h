@@ -1,9 +1,6 @@
 #ifndef FIXTURE_H
 #define FIXTURE_H
 
-<<<<<<< HEAD
-#include <string>
-=======
 #pragma once
 #include <string>
 #include <vector>
@@ -12,7 +9,6 @@
 #include "Stadium.h"
 #include "MatchOfficial.h"
 #include "MatchResult.h"
->>>>>>> efdb78d414269764ed6398367a007978d9db22af
 
 class Fixture {
     private:
