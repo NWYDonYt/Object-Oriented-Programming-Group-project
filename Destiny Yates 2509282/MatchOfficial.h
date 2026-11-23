@@ -29,10 +29,12 @@ class MatchOfficial {
             this->Available = MO.Available;
         };
 
-        // Getter and Setter methods
+       //Mutators
         void setOfficiatingRole(std::string officiatingRole);
         void setRank(std::string rank);
         void setAvailable(bool Available);
+
+        //Accessors
         std::string getOfficiatingRole();
         std::string getRank();
         bool getAvailable();

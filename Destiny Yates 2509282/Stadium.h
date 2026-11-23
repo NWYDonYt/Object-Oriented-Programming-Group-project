@@ -18,9 +18,37 @@ class Stadium {
         int occupancy;
 
     public:
-        Stadium();
-        Stadium(string name, int capacity);
+        // Default constructor
+        Stadium(){
+            stadiumId = 0;
+            name = "";
+            location = "";
+            capacity = 0;
+            fieldCondition = "";
+            ticketPrice = 0.0;
+            ticketsSold = 0;
+            occupancy = 0;
+        };
+
+        // Parameterized constructor
+        Stadium(string name, int capacity)
+        {
+            this->name = name;
+            this->capacity = capacity;
+        };
+
         Stadium(const Stadium& S);
+        {
+            this->stadiumId = S.stadiumId;
+            this->name = S.name;
+            this->location = S.location;
+            this->capacity = S.capacity;
+            this->fieldCondition = S.fieldCondition;
+            this->ticketPrice = S.ticketPrice;
+            this->ticketsSold = S.ticketsSold;
+            this->occupancy = S.occupancy;
+        };
+
         void sellTickets(int ticketsSold);
 
         //Mutators
