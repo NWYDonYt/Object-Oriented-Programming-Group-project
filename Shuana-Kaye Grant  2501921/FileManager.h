@@ -1,124 +1,30 @@
-#include "FileManager.h"
+#ifndef FILEMANAGER_H
+#define FILEMANAGER_H
 
-#include <fstream>
-#include <sstream>
+#include <string>
+#include <vector>
+#include "Exceptions.h"
 
-using namespace std;
+class FileManager {
+private:
+    std::string folder;
 
-FileManager::FileManager(const string& dataFolder) {
-    folder = dataFolder;
-}
+public:
+    explicit FileManager(const std::string& dataFolder = "Data");
 
-string FileManager::getPath(const string& fileName) const {
-    if (fileName.empty()) {
-        throw FileException("File name cannot be empty");
-    }
-    if (folder.empty()) {
-        return fileName;
-    }
-    return folder + "/" + fileName;
-}
+    std::string getPath(const std::string& fileName) const;
+    bool fileExists(const std::string& fileName) const;
+    void saveRecords(const std::string& fileName, const std::vector<std::string>& records) const;
+    std::vector<std::string> loadRecords(const std::string& fileName) const;
 
-bool FileManager::fileExists(const string& fileName) const {
-    ifstream file(getPath(fileName).c_str());
-    return file.is_open();
-}
+    // Static text conversion and formatting utilities
+    static std::string joinFields(const std::vector<std::string>& fields);
+    static std::vector<std::string> splitFields(const std::string& record);
 
-void FileManager::saveRecords(const string& fileName, const vector<string>& records) const {
-    string path = getPath(fileName);
-    ofstream file(path.c_str());
-    if (!file) {
-        throw FileException("Could not open " + path + " for saving. Check that the folder exists.");
-    }
+    static std::string toText(int value);
+    static std::string toText(double value);
+    static int toInt(const std::string& text);
+    static double toDouble(const std::string& text);
+};
 
-    for (size_t i = 0; i < records.size(); i++) {
-        if (records[i].find('\n') != string::npos) {
-            throw FileException("A record in " + fileName + " contains a line break");
-        }
-        file << records[i] << "\n";
-    }
-
-    if (!file) {
-        throw FileException("Error while writing to " + path);
-    }
-}
-
-vector<string> FileManager::loadRecords(const string& fileName) const {
-    vector<string> records;
-    string path = getPath(fileName);
-    ifstream file(path.c_str());
-    if (!file) {
-        return records;
-    }
-
-    string line;
-    while (getline(file, line)) {
-        if (!line.empty() && line[line.size() - 1] == '\r') {
-            line.erase(line.size() - 1);
-        }
-        if (!line.empty()) {
-            records.push_back(line);
-        }
-    }
-    return records;
-}
-
-string FileManager::joinFields(const vector<string>& fields) {
-    string record;
-    for (size_t i = 0; i < fields.size(); i++) {
-        if (fields[i].find('|') != string::npos) {
-            throw FileException("The value '" + fields[i] + "' cannot contain the | character");
-        }
-        if (i > 0) {
-            record += "|";
-        }
-        record += fields[i];
-    }
-    return record;
-}
-
-vector<string> FileManager::splitFields(const string& record) {
-    vector<string> fields;
-    string field;
-    stringstream ss(record);
-    while (getline(ss, field, '|')) {
-        fields.push_back(field);
-    }
-    if (!record.empty() && record[record.size() - 1] == '|') {
-        fields.push_back("");
-    }
-    return fields;
-}
-
-string FileManager::toText(int value) {
-    stringstream ss;
-    ss << value;
-    return ss.str();
-}
-
-string FileManager::toText(double value) {
-    stringstream ss;
-    ss.precision(10);
-    ss << value;
-    return ss.str();
-}
-
-int FileManager::toInt(const string& text) {
-    stringstream ss(text);
-    int value;
-    char extra;
-    if (!(ss >> value) || (ss >> extra)) {
-        throw FileException("'" + text + "' is not a valid whole number");
-    }
-    return value;
-}
-
-double FileManager::toDouble(const string& text) {
-    stringstream ss(text);
-    double value;
-    char extra;
-    if (!(ss >> value) || (ss >> extra)) {
-        throw FileException("'" + text + "' is not a valid number");
-    }
-    return value;
-}
+#endif // FILEMANAGER_H
