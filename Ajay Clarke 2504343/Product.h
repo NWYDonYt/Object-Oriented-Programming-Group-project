@@ -1,59 +1,50 @@
 #ifndef PRODUCT_H
 #define PRODUCT_H
-#pragma once
+
 #include <string>
+#include <vector>
 #include "Storable.h"
-#include <iostream>
-using namespace std;
-class Product {
-private:
+
+// Abstract superclass for all items sold in the stadium shop
+class Product : public Storable {
+protected:
     int productId;
-    string name;
+    std::string name;
     double price;
     int stock;
 
 public:
-    Product(){
-        productId = 0;
-        name = "";
-        price = 0.0;
-        stock = 0;
-    };
+    static constexpr double GCT_RATE = 0.15; // 15% General Consumption Tax
 
-    Product(int id, const string& name, double price, int stock){
-        this->productId = id;
-        this->name = name;
-        this->price = price;
-        this->stock = stock;
-    };
+    Product();
+    Product(int id, const std::string& productName, double productPrice, int initialStock);
+    virtual ~Product() {}
 
-    int getProductId(){
-        return productId;
-    };
+    // Accessors
+    int getProductId() const;
+    std::string getName() const;
+    double getPrice() const;
+    int getStock() const;
 
-    string getName(){
-        return name;
-    };
-
-    double getPrice(){
-        return price;
-    };
-
-    int getStock(){
-        return stock;
-    };
-
+    // Mutators with validation
     void setProductId(int id);
-    void setName(const string& name);
-    void setPrice(double price);
-    void setStock(int stock);
+    void setName(const std::string& newName);
+    void setPrice(double newPrice);
+    void setStock(int newStock);
+    void addStock(int quantity);
+    void reduceStock(int quantity);
 
-    void describe(){
-        cout << "Product ID: " << productId << endl;
-        cout << "Name: " << name << endl;
-        cout << "Price: $" << price << endl;
-        cout << "Stock: " << stock << endl;
-    };
+    // Tax calculation
+    virtual double calculateTax(int quantity = 1) const;
+    virtual double calculateTotal(int quantity = 1) const;
+
+    // Pure virtual methods
+    virtual void describe() const = 0;
+    virtual std::string getProductType() const = 0;
+
+    // Storable interface methods
+    virtual std::string toRecord() const override;
+    virtual void fromRecord(const std::string& record) override;
 };
 
 #endif // PRODUCT_H

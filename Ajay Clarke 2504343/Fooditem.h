@@ -1,28 +1,59 @@
-#ifndef Fooditem_H
-#define Fooditem_H
-#pragma once
-#include "Product.h"
-#include <iostream>
+#ifndef FOODITEM_H
+#define FOODITEM_H
 
-class Fooditem {
+#include "Product.h"
+#include <string>
+using namespace std;
+class FoodItem : public Product {
 private:
-   bool isBeverage;
+    bool isBeverage;
+    string portionSize;
 
 public:
-    Fooditem(){
+    FoodItem(){
         isBeverage = false;
+        portionSize = "Regular";
     };
-    Fooditem(bool isBeverage){
-        this->isBeverage = isBeverage;
+    FoodItem(int id, const string& name, double price, int stock, bool beverage, const string& portion = "Regular"){
+        this->id = id;
+        this->name = name;
+        this->price = price;
+        this->stock = stock;
+        isBeverage = beverage;
+        portionSize = portion;
     };
-    Fooditem(const Fooditem& F){
-        isBeverage = F.isBeverage;
+    FoodItem(const FoodItem& other){
+        this->id = other.id;
+        this->name = other.name;
+        this->price = other.price;
+        this->stock = other.stock;
+        isBeverage = other.isBeverage;
+        portionSize = other.portionSize;
+    };
+    // Accessors
+    bool getIsBeverage(){
+        return isBeverage;
+    };
+    string getPortionSize(){
+        return portionSize;
+    };
+    // Mutators with validation
+    void setIsBeverage(bool beverage){
+            this->isBeverage = beverage;
+    };
+    void setPortionSize(const string& portion){
+        this->portionSize = portion;
     };
 
-    void describe() {
-        cout << "This is a food item." << endl;
-    }
 
+    
+    // Polymorphic methods
+    virtual void describe() const override;
+    virtual string getProductType() const override;
+
+    // Storable interface methods
+    virtual string toRecord() const override;
+    virtual void fromRecord(const string& record) override;
 };
 
-#endif // Fooditem_H
+#endif // FOODITEM_H
