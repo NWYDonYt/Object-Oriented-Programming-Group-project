@@ -6,14 +6,16 @@
 #include "Product.h"
 #include "Merchandise.h"
 #include "Fooditem.h"
+ using namespace std;
+
+ 
 
 class StadiumShop {
 private:
-    std::vector<Product*> inventory;
+    vector<Product*> inventory;
     double totalRevenue;
     double totalTaxCollected;
     int totalItemsSold;
-
 public:
     static constexpr double SHOP_GCT_RATE = 0.15; // 15% GCT
 
@@ -22,6 +24,7 @@ public:
         totalTaxCollected = 0.0;
         totalItemsSold = 0;
     };
+    
     ~StadiumShop();
 
     // Prevent accidental shallow copies

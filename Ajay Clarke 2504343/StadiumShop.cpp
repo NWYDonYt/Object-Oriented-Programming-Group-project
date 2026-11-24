@@ -11,14 +11,12 @@ StadiumShop::StadiumShop()
 StadiumShop::~StadiumShop() {
     clearInventory();
 }
-
 void StadiumShop::clearInventory() {
     for (size_t i = 0; i < inventory.size(); i++) {
         delete inventory[i];
     }
     inventory.clear();
 }
-
 void StadiumShop::addProduct(Product* product) {
     if (!product) {
         throw InvalidDataException("Cannot add null product to shop.");
@@ -30,7 +28,6 @@ void StadiumShop::addProduct(Product* product) {
     }
     inventory.push_back(product);
 }
-
 bool StadiumShop::removeProduct(int productId) {
     for (size_t i = 0; i < inventory.size(); i++) {
         if (inventory[i]->getProductId() == productId) {
@@ -41,7 +38,6 @@ bool StadiumShop::removeProduct(int productId) {
     }
     return false;
 }
-
 Product* StadiumShop::findProduct(int productId) {
     for (size_t i = 0; i < inventory.size(); i++) {
         if (inventory[i]->getProductId() == productId) {
@@ -50,7 +46,6 @@ Product* StadiumShop::findProduct(int productId) {
     }
     return nullptr;
 }
-
 const Product* StadiumShop::findProduct(int productId) const {
     for (size_t i = 0; i < inventory.size(); i++) {
         if (inventory[i]->getProductId() == productId) {
@@ -59,7 +54,6 @@ const Product* StadiumShop::findProduct(int productId) const {
     }
     return nullptr;
 }
-
 void StadiumShop::restock(int productId, int quantity) {
     if (quantity <= 0) {
         throw NegativeValueException("Restock quantity must be positive. Provided: " + FileManager::toText(quantity));
@@ -70,7 +64,6 @@ void StadiumShop::restock(int productId, int quantity) {
     }
     p->addStock(quantity);
 }
-
 void StadiumShop::displayInventory() const {
     std::cout << "\n================= KPFL STADIUM SHOP INVENTORY =================\n";
     if (inventory.empty()) {
@@ -83,12 +76,10 @@ void StadiumShop::displayInventory() const {
     }
     std::cout << "===============================================================\n";
 }
-
 const std::vector<Product*>& StadiumShop::getInventory() const {
     return inventory;
 }
-
-std::string StadiumShop::completeSale(int productId, int quantity, double paymentAmount,
+string StadiumShop::completeSale(int productId, int quantity, double paymentAmount,
                                       double& outSubtotal, double& outTax, double& outTotal, double& outChange) {
     if (quantity <= 0) {
         throw NegativeValueException("Purchase quantity must be positive. Provided: " + FileManager::toText(quantity));
@@ -151,15 +142,12 @@ std::string StadiumShop::completeSale(int productId, int quantity, double paymen
 double StadiumShop::getTotalRevenue() const {
     return totalRevenue;
 }
-
 double StadiumShop::getTotalTaxCollected() const {
     return totalTaxCollected;
 }
-
 int StadiumShop::getTotalItemsSold() const {
     return totalItemsSold;
 }
-
 void StadiumShop::setFinancials(double revenue, double tax, int itemsSold) {
     totalRevenue = revenue;
     totalTaxCollected = tax;

@@ -3,40 +3,35 @@
 #include "FileManager.h"
 #include <iostream>
 #include <iomanip>
+using namespace std;
 
-FoodItem::FoodItem()
-    : Product(0, "Match Snack", 0.0, 0), isBeverage(false), portionSize("Regular") {}
+FoodItem::FoodItem(): 
+    Product(0, "Match Snack", 0.0, 0), isBeverage(false), portionSize("Regular") {}
 
-FoodItem::FoodItem(int id, const std::string& name, double price, int stock,
-                   bool beverage, const std::string& portion)
-    : Product(id, name, price, stock) {
+FoodItem::FoodItem(int id, const string& name, double price, int stock, bool beverage, const string& portion) 
+                :Product(id, name, price, stock) {
     setIsBeverage(beverage);
     setPortionSize(portion);
 }
-
-FoodItem::FoodItem(const FoodItem& other)
-    : Product(other.productId, other.name, other.price, other.stock),
-      isBeverage(other.isBeverage), portionSize(other.portionSize) {}
-
-bool FoodItem::getIsBeverage() const {
+FoodItem::FoodItem(const FoodItem& other) 
+                : Product(other.productId, other.name, other.price, other.stock),
+                        isBeverage(other.isBeverage), portionSize(other.portionSize) {}
+             
+bool FoodItem::getIsBeverage() {
     return isBeverage;
 }
-
-std::string FoodItem::getPortionSize() const {
+string FoodItem::getPortionSize() {
     return portionSize;
 }
-
 void FoodItem::setIsBeverage(bool beverage) {
     isBeverage = beverage;
 }
-
 void FoodItem::setPortionSize(const std::string& portion) {
     if (portion.empty()) {
         throw InvalidDataException("Food item portion size cannot be empty.");
     }
     portionSize = portion;
 }
-
 void FoodItem::describe() const {
     std::cout << "[Food/Drink] ID: " << productId
               << " | Name: " << name
@@ -46,12 +41,10 @@ void FoodItem::describe() const {
               << " (excl. 15% GCT: $" << calculateTax() << ")"
               << " | Stock: " << stock << std::endl;
 }
-
-std::string FoodItem::getProductType() const {
+string FoodItem::getProductType() const {
     return isBeverage ? "Beverage" : "Food";
 }
-
-std::string FoodItem::toRecord() const {
+string FoodItem::toRecord() const {
     std::vector<std::string> fields;
     fields.push_back("FoodItem");
     fields.push_back(FileManager::toText(productId));
@@ -62,9 +55,8 @@ std::string FoodItem::toRecord() const {
     fields.push_back(portionSize);
     return FileManager::joinFields(fields);
 }
-
-void FoodItem::fromRecord(const std::string& record) {
-    std::vector<std::string> fields = FileManager::splitFields(record);
+void FoodItem::fromRecord(const string& record) {
+    vector<string> fields = FileManager::splitFields(record);
     if (fields.size() < 7) {
         throw FileException("FoodItem record requires 7 fields: " + record);
     }

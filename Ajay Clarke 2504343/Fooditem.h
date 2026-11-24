@@ -14,19 +14,11 @@ public:
         isBeverage = false;
         portionSize = "Regular";
     };
-    FoodItem(int id, const string& name, double price, int stock, bool beverage, const string& portion = "Regular"){
-        this->id = id;
-        this->name = name;
-        this->price = price;
-        this->stock = stock;
+    FoodItem(int id, const string& name, double price, int stock, bool beverage, const string& portion = "Regular"):Product(id, name, price, stock){
         isBeverage = beverage;
         portionSize = portion;
     };
-    FoodItem(const FoodItem& other){
-        this->id = other.id;
-        this->name = other.name;
-        this->price = other.price;
-        this->stock = other.stock;
+    FoodItem(const FoodItem& other):Product(other){
         isBeverage = other.isBeverage;
         portionSize = other.portionSize;
     };
@@ -44,8 +36,6 @@ public:
     void setPortionSize(const string& portion){
         this->portionSize = portion;
     };
-
-
     
     // Polymorphic methods
     virtual void describe() const override;
