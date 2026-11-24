@@ -2,6 +2,8 @@
 #define MATCHRESULT_H
 #pragma once
 #include "Storable.h"
+using namespace std;
+
 class MatchResult {
     private:
         int homeScore;
@@ -26,15 +28,23 @@ class MatchResult {
             this->homeScore = MR.homeScore;
             this->awayScore = MR.awayScore;
         }
-        void getWinner();
-
+        void getWinner(){
+            return (homeScore > awayScore) ? "Home Team" : (awayScore > homeScore) ? "Away Team" : "Draw";
+        };
         //Mutators
-        void setHomeScore(int homeScore);
-        void setAwayScore(int awayScore);
-
+        void setHomeScore(int homeScore){
+            this->homeScore = homeScore;
+        };
+        void setAwayScore(int awayScore){
+            this->awayScore = awayScore;
+        };
         //Accessors
-        int getHomeScore();
-        int getAwayScore();
+        int getHomeScore(){
+            return homeScore;
+        };
+        int getAwayScore(){
+            return awayScore;
+        };
 };
 
 #endif // MATCHRESULT_H

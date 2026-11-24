@@ -3,7 +3,6 @@
 
 #pragma once
 #include <string>
-#include <vector>
 #include "Storable.h"
 #include "FootballTeam.h"
 #include "Stadium.h"
@@ -38,14 +37,26 @@ class Fixture {
         };
         
         //Mutators
-        void setDate(std::string date);
-        void setTime(std::string time);
-        void setStatus(std::string status);
+        void setDate(std::string date){
+            this->date = date;
+        };
+        void setTime(std::string time){
+            this->time = time;
+        };
+        void setStatus(std::string status){
+            this->status = status;
+        };
 
         //Accessors
-        std::string getDate();
-        std::string getTime();
-        std::string getStatus();
+        std::string getDate(){
+            return date;
+        };
+        std::string getTime(){
+            return time;
+        };
+        std::string getStatus(){
+            return status;
+        };
 };
 
 #endif // FIXTURE_H;

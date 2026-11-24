@@ -18,13 +18,11 @@ class Stadium {
         int occupancy;
 
     public:
-<<<<<<< HEAD
         // Default constructor
         Stadium(){
             stadiumId = 0;
             name = "";
             location = "";
-            capacity = 0;
             fieldCondition = "";
             ticketPrice = 0.0;
             ticketsSold = 0;
@@ -32,16 +30,12 @@ class Stadium {
         };
 
         // Parameterized constructor
-        Stadium(string name, int capacity)
+        Stadium(string name, int occupancy)
         {
             this->name = name;
-            this->capacity = capacity;
+            this->occupancy = occupancy;
         };
         //Copy constructor
-=======
-        Stadium();
-        Stadium(string name, int occupancy );
->>>>>>> d2780510fcc6e9cb8267706ccc94629a5491725d
         Stadium(const Stadium& S);
         {
             this->stadiumId = S.stadiumId;
@@ -53,31 +47,69 @@ class Stadium {
             this->ticketsSold = S.ticketsSold;
             this->occupancy = S.occupancy;
         };
-
-        void sellTickets(int ticketsSold);
+        void sellTickets(int ticketsSold){
+            if (ticketsSold + ticketsSold > occupancy) {
+                throw std::runtime_error("Cannot sell more tickets than the stadium's capacity.");
+            }
+            this->ticketsSold += ticketsSold;
+        };
 
         //Mutators
-        void setStadiumId(int stadiumId);
-        void setName(string name);
-        void setLocation(string location);
-        void setFieldCondition(string fieldCondition);
-        void setTicketPrice(double ticketPrice);
-        void setTicketsSold(int ticketsSold);
-        void setOccupancy(int occupancy);
+        void setStadiumId(int stadiumId){
+            this->stadiumId = stadiumId;
+        };
+        void setName(string name){
+            this->name = name;
+        };
+        void setLocation(string location){
+            this->location = location;
+        };
+        void setFieldCondition(string fieldCondition){
+            this->fieldCondition = fieldCondition;
+        };
+        void setTicketPrice(double ticketPrice){
+            this->ticketPrice = ticketPrice;
+        };
+        void setTicketsSold(int ticketsSold){
+            this->ticketsSold = ticketsSold;
+        };
+        void setOccupancy(int occupancy){
+            this->occupancy = occupancy;
+        };
 
         //Accessors
-        int getStadiumId();
-        string getName();
-        string getLocation();
-        int getCapacity();
-        string getFieldCondition();
-        double getTicketPrice();
-        int getTicketsSold();
-        int getOccupancy();
-
+        int getStadiumId(){
+            return stadiumId;
+        };
+        string getName(){
+            return name;
+        };
+        string getLocation(){
+            return location;
+        };
+        int getCapacity(){
+            return occupancy;
+        };
+        string getFieldCondition(){
+            return fieldCondition;
+        };
+        double getTicketPrice(){
+            return ticketPrice;
+        };
+        int getTicketsSold(){
+            return ticketsSold;
+        };
+        int getOccupancy(){
+            return occupancy;
+        };
 
         //ticket sales cannot exceed capacity of stadium
-        void TicketsSold(int quantity);
+        void TicketsSold(int quantity){
+            if (ticketsSold + quantity > occupancy) {
+                throw std::runtime_error("Cannot sell more tickets than the stadium's capacity.");
+            }
+            ticketsSold += quantity;
+        };
 
         
 };

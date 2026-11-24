@@ -1,9 +1,10 @@
-#ifndef MATCHOFFICAL_H
-#define MATCHOFFICAL_H
+#ifndef MATCHOFFICIAL_H
+#define MATCHOFFICIAL_H
 
 #pragma once
 #include <string>
-#include "Person.h"
+using namespace std;
+
 class MatchOfficial {
     private:
         string officiatingRole;
@@ -17,7 +18,7 @@ class MatchOfficial {
             Available = false;
         };
     // Parameterized constructor
-        MatchOfficial(std::string officiatingRole, std::string rank, bool Available){
+        MatchOfficial(string officiatingRole, string rank, bool Available){
             this->officiatingRole = officiatingRole;
             this->rank = rank;
             this->Available = Available;
@@ -30,14 +31,26 @@ class MatchOfficial {
         };
 
        //Mutators
-        void setOfficiatingRole(std::string officiatingRole);
-        void setRank(std::string rank);
-        void setAvailable(bool Available);
+        void setOfficiatingRole(string officiatingRole){
+            this->officiatingRole = officiatingRole;
+        };
+        void setRank(string rank){
+            this->rank = rank;
+        };
+        void setAvailable(bool Available){
+            this->Available = Available;
+        };
 
         //Accessors
-        std::string getOfficiatingRole();
-        std::string getRank();
-        bool getAvailable();
+        string getOfficiatingRole(){
+            return officiatingRole;
+        };
+        string getRank(){
+            return rank;
+        };
+        bool getAvailable(){
+            return Available;
+        };
 };
 
 #endif // MATCHOFFICAL_H

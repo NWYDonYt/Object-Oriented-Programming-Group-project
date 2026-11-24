@@ -17,7 +17,11 @@ private:
 public:
     static constexpr double SHOP_GCT_RATE = 0.15; // 15% GCT
 
-    StadiumShop();
+    StadiumShop(){
+        totalRevenue = 0.0;
+        totalTaxCollected = 0.0;
+        totalItemsSold = 0;
+    };
     ~StadiumShop();
 
     // Prevent accidental shallow copies
