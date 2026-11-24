@@ -11,13 +11,14 @@ class Stadium {
         int stadiumId;
         string name;
         string location;
-        int capacity;
+    
         string fieldCondition;
         double ticketPrice;
         int ticketsSold;
         int occupancy;
 
     public:
+<<<<<<< HEAD
         // Default constructor
         Stadium(){
             stadiumId = 0;
@@ -37,6 +38,10 @@ class Stadium {
             this->capacity = capacity;
         };
         //Copy constructor
+=======
+        Stadium();
+        Stadium(string name, int occupancy );
+>>>>>>> d2780510fcc6e9cb8267706ccc94629a5491725d
         Stadium(const Stadium& S);
         {
             this->stadiumId = S.stadiumId;
@@ -55,7 +60,6 @@ class Stadium {
         void setStadiumId(int stadiumId);
         void setName(string name);
         void setLocation(string location);
-        void setCapacity(int capacity);
         void setFieldCondition(string fieldCondition);
         void setTicketPrice(double ticketPrice);
         void setTicketsSold(int ticketsSold);
