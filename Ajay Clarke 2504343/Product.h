@@ -10,7 +10,7 @@ using namespace std;
 class Product : public Storable {
 protected:
     int productId;
-    std::string name;
+    string name;
     double price;
     int stock;
 
@@ -52,7 +52,7 @@ public:
         }
         this->productId = id;
     };
-    void setName(const std::string& newName){
+    void setName(const string& newName){
         if (newName.empty()) {
             throw InvalidDataException("Product name cannot be empty.");
         }
@@ -92,11 +92,11 @@ public:
 
     // Pure virtual methods
     virtual void describe() const = 0;
-    virtual std::string getProductType() const = 0;
+    virtual string getProductType() const = 0;
 
     // Storable interface methods
-    virtual std::string toRecord() const override;
-    virtual void fromRecord(const std::string& record) override;
+    virtual string toRecord() const override;
+    virtual void fromRecord(const string& record) override;
 };
 
 #endif // PRODUCT_H

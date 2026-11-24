@@ -20,7 +20,9 @@ private:
     int ticketsSold;
 
 public:
-    Fixture();
+    Fixture(){
+        
+    };
     Fixture(int id, int homeId, int awayId, int stadId,
             const std::string& fixDate, const std::string& fixTime,
             const std::string& fixStatus = "Scheduled");

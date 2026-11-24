@@ -15,22 +15,17 @@ public:
         itemType = "Jersey";
         size = "Standard";
     };
-    Merchandise(int id, const string& name, double price, int stock, const string& type, const string& itemSize){
-        this->productId = id;
-        this->name = name;
-        this->price = price;
-        this->stock = stock;
+    Merchandise(int id, const string& name, double price, int stock, const string& type, const string& itemSize)
+                :Product(id, name, price, stock){
         itemType = type;
         size = itemSize;
     };
-    Merchandise(const Merchandise& other){
-        this->productId = other.productId;
-        this->name = other.name;
-        this->price = other.price;
-        this->stock = other.stock;
+    Merchandise(const Merchandise& other)
+                :Product(other){
         itemType = other.itemType;
         size = other.size;
     };
+    
     // Accessors
     string getItemType(){
         return itemType;

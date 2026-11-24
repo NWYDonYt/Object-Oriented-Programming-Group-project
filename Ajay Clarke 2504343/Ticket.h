@@ -8,7 +8,7 @@ class Ticket : public Storable {
 private:
     int ticketId;
     int fixtureId;
-    std::string category; // "VIP", "Grandstand", "Bleachers"
+    string category; 
     double price;
     bool isSold;
     int spectatorId;
@@ -48,7 +48,7 @@ public:
     int getFixtureId() const{
         return fixtureId;
     };
-    std::string getCategory() const{
+    string getCategory() const{
         return category;
     };
     double getPrice() const{
@@ -120,8 +120,8 @@ public:
     };
 
     // Storable interface methods
-    virtual std::string toRecord() const override;
-    virtual void fromRecord(const std::string& record) override;
+    virtual string toRecord() const override;
+    virtual void fromRecord(const string& record) override;
 };
 
 #endif // TICKET_H
