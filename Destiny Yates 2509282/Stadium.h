@@ -36,7 +36,7 @@ class Stadium {
             this->name = name;
             this->capacity = capacity;
         };
-
+        //Copy constructor
         Stadium(const Stadium& S);
         {
             this->stadiumId = S.stadiumId;
