@@ -1,31 +1,58 @@
-//Player Header File
-#ifndef PLAYER_H
-#define PLAYER_H
+// Person Header File
+#ifndef PERSON_H
+#define PERSON_H
 
+#include <iostream>
 #include <string>
 
-// Step 1: the Player's own data only. Inheritance from Person comes next.
-class Player {
+using namespace std;
+
+class Person {
 private:
-    string position;
-    int jerseyNumber;
-    int goals;
-    string playingStatus;
+    int id;
+    string name;
+    int age;
+    string gender;
 
 public:
-    Player(string playerPosition, int shirtNumber, int goalsScored, string status);
+    Person(int personId, string personName, int personAge, string personGender) {
+        id = personId;
+        name = personName;
+        age = personAge;
+        gender = personGender;
+    }
 
-    string getPosition() const;
-    int getJerseyNumber() const;
-    int getGoals() const;
-    string getPlayingStatus() const;
+    virtual ~Person() {}
 
-    void setPosition(string newPosition);
-    void setJerseyNumber(int newNumber);
-    void setPlayingStatus(string newStatus);
-    void addGoals(int extraGoals);
+    int getId() const {
+        return id;
+    }
 
-    void displayInformation() const;
+    string getName() const {
+        return name;
+    }
+
+    int getAge() const {
+        return age;
+    }
+
+    string getGender() const {
+        return gender;
+    }
+
+    void setName(string newName) {
+        name = newName;
+    }
+
+    void setAge(int newAge) {
+        age = newAge;
+    }
+
+    void setGender(string newGender) {
+        gender = newGender;
+    }
+
+    virtual void displayInformation() const = 0;
 };
 
 #endif

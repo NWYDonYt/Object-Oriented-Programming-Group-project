@@ -1,20 +1,36 @@
-//Spectator Header File
+// Spectator Header File
 #ifndef SPECTATOR_H
 #define SPECTATOR_H
 
-// Step 1: the Spectator's own data only. Inheritance from Person comes next.
+#include <iostream>
+#include "Person.h"
+
+using namespace std;
+
 class Spectator {
 private:
     int ticketsBought;
 
 public:
-    Spectator();
-    Spectator(int tickets);
+    Spectator() {
+        ticketsBought = 0;
+    }
 
-    int getTicketsBought() const;
-    void addTicket();
+    Spectator(int tickets) {
+        ticketsBought = tickets;
+    }
 
-    void displayInformation() const;
+    int getTicketsBought() const {
+        return ticketsBought;
+    }
+
+    void addTicket() {
+        ticketsBought++;
+    }
+
+    void displayInformation() const {
+        cout << "Tickets Bought: " << ticketsBought << endl;
+    }
 };
 
 #endif

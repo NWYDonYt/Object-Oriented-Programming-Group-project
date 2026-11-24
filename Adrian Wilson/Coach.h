@@ -1,24 +1,25 @@
 
+// Coach Header File
+#ifndef COACH_H
+#define COACH_H
 
-//Spectator Header File
-#ifndef SPECTATOR_H
-#define SPECTATOR_H
-#pragma once
-#include <string>
 #include "Person.h"
-// Step 1: the Spectator's own data only. Inheritance from Person comes next.
-class Spectator {
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Coach : public Person {
 private:
-    int ticketsBought;
+    string teamName;
 
 public:
-    Spectator();
-    Spectator(int tickets);
+    Coach(int id, string name, int age, string gender, string team);
 
-    int getTicketsBought() const;
-    void addTicket();
+    string getTeamName() const;
+    void setTeamName(string newTeam);
 
-    void displayInformation() const;
+    void displayInformation() const override;
 };
 
 #endif

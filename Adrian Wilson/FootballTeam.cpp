@@ -22,6 +22,8 @@ vector<string> FootballLeague::readData(string filename) const {
         }
     }
 
+    file.close();
+
     return records;
 }
 

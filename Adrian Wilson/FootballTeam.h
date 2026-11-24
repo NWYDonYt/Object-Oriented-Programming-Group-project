@@ -1,10 +1,11 @@
-//Football League Header File
+// Football League Header File
 #ifndef FOOTBALLLEAGUE_H
 #define FOOTBALLLEAGUE_H
 
-#pragma once
+#include <iostream>
 #include <string>
 #include <vector>
+
 #include "FootballTeam.h"
 #include "Stadium.h"
 #include "MatchOfficial.h"
@@ -14,17 +15,34 @@
 #include "StadiumShop.h"
 #include "LeagueCommissioner.h"
 
+using namespace std;
+
 class FootballLeague {
 private:
-    std::string leagueName;
+    string leagueName;
     int season;
 
 public:
-    FootballLeague(std::string name, int year);
-    std::string getLeagueName();
-    int getSeason();
-    std::vector<std::string> readData(std::string filename);
-    void displayInformation();
+    // Constructor
+    FootballLeague(string name, int year) {
+        leagueName = name;
+        season = year;
+    }
+
+    // Getter functions
+    string getLeagueName() const {
+        return leagueName;
+    }
+
+    int getSeason() const {
+        return season;
+    }
+
+    // Read data from a file
+    vector<string> readData(string filename) const;
+
+    // Display league information
+    void displayInformation() const;
 };
 
 #endif

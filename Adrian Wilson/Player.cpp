@@ -1,32 +1,41 @@
-//Player Header File
-#ifndef PLAYER_H
-#define PLAYER_H
-using namespace std;
-#include <string>
+// Person.cpp
 
-// Step 1: the Player's own data only. Inheritance from Person comes next.
-class Player {
-private:
-    string position;
-    int jerseyNumber;
-    int goals;
-    string playingStatus;
+#include "Person.h"
 
-public:
-    Player(string playerPosition, int shirtNumber, int goalsScored, string status);
+Person::Person(int personId, string personName, int personAge, string personGender) {
+    id = personId;
+    name = personName;
+    age = personAge;
+    gender = personGender;
+}
 
-    string getPosition() const;
-    int getJerseyNumber() const;
-    int getGoals() const;
-    string getPlayingStatus() const;
+Person::~Person() {}
 
-    void setPosition(string newPosition);
-    void setJerseyNumber(int newNumber);
-    void setPlayingStatus(string newStatus);
-    void addGoals(int extraGoals);
+int Person::getId() const {
+    return id;
+}
 
-    void displayInformation() const;
-};
+string Person::getName() const {
+    return name;
+}
 
-#endif
+int Person::getAge() const {
+    return age;
+}
+
+string Person::getGender() const {
+    return gender;
+}
+
+void Person::setName(string newName) {
+    name = newName;
+}
+
+void Person::setAge(int newAge) {
+    age = newAge;
+}
+
+void Person::setGender(string newGender) {
+    gender = newGender;
+}
 
